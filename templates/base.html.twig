@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="height: 70px;">
+    <a class="navbar-brand" href="#">ChromePlugin</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
+    <ul class="nav navbar-nav navbar-right">
+        {% if app.user %}
+            <li>
+                <a class="btn btn-outline-success mr-4 btn-lg" href="{{ path('fetch_author') }}">
+                    Список авторов
+                </a>
+            </li>
+            <li>
+                <a class="btn btn-outline-success mr-4 btn-lg" href="{{ path('fetch_data') }}">
+                    Список статей
+                </a>
+            </li>
+            <li><a class="nav-link btn btn-outline-danger btn-lg mr-4" href="{{ path('app_logout') }}">Выйти</a></li>
+        {% else %}
+            <li><a class="nav-link btn btn-outline-success btn-lg mr-4" href="{{ path('app_login') }}">Войти</a></li>
+            <li>
+                <a class="nav-link btn btn-outline-success btn-lg" href="{{ path('registration') }}">Зарегистрироваться</a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+{% block body %}{% endblock %} {% block javascripts %}{% endblock %}
+</body>
+</html>

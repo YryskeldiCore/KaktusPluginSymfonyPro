@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <style>
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card bg-light mb-3 mt-3">
+                    <div class="card-body">
+                        <div class="card-header">Список статей</div>
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Заголовок статьи</th>
+                                <th>Дата публикации</th>
+                            </tr>
+                            </thead>
+                            <tr>
+                                <tbody>
+                                {% for article in pagination %}
+                                    <tr>
+                                        <th scope="row">{{ article.getId() }}</th>
+                                        <td>{{ article.getName() }}</td>
+                                        <td>{{ article.getPublishAt() }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ knp_pagination_render(pagination) }}
+{% endblock %}

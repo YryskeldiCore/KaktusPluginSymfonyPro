@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %} {% block
+    body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card bg-light mb-3 mt-3">
+                    <div class="card-body">
+                        <div class="card-header">Список статей автора {{ author.getName() }}</div>
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Заголовок статьи</th>
+                            </tr>
+                            </thead>
+                            <tr>
+                                <tbody>
+                                {% for value, article in articles %}
+                                    <tr>
+                                        <th scope="row">{{ value + 1 }}</th>
+                                        <td>{{ article.getName() }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

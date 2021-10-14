@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <style>
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card bg-light mb-3 mt-3">
+                    <div class="card-body">
+                        <div class="card-header">Список авторов</div>
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Авторы</th>
+                            </tr>
+                            </thead>
+                            <tr>
+                                <tbody>
+                                {% for author in pagination %}
+                                    <tr>
+                                        <th scope="row">{{ author.getId() }}</th>
+                                        <td>
+                                            <a
+                                                class="btn btn-light"
+                                                href="{{ path('fetch_one', {'author_id' : author.getId()}) }}">
+                                                {{ author.getName() }}
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ knp_pagination_render(pagination) }}
+{% endblock %}

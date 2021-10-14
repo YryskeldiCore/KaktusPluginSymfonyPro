@@ -1,0 +1,17 @@
+{
+  "name": "Google Chrome Extension",
+  "description": "My first plugin",
+  "version": "1.1",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://kaktus.media/*"],
+      "js": ["script.js"],
+      "run-at": "document_end"
+    }
+  ],
+  "permissions": ["activeTab"]
+}
